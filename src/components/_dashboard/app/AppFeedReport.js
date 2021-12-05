@@ -168,17 +168,17 @@ function DetailedComment(props) {
   };
 
   useEffect(() => {
-    // async function retrieve() {
-    //   const tempRows = await get();
-    //   setRowsValue(tempRows);
-    // }
-    // retrieve();
-    const offlineTest = [
-      { id: 0, comment: 'T1', outcome: 'bad' },
-      { id: 1, comment: 'T2', outcome: 'good' },
-      { id: 2, comment: 'T3', outcome: 'potential' }
-    ];
-    setRowsValue(offlineTest);
+    async function retrieve() {
+      const tempRows = await get();
+      setRowsValue(tempRows);
+    }
+    retrieve();
+    // const offlineTest = [
+    //   { id: 0, comment: 'T1', outcome: 'bad' },
+    //   { id: 1, comment: 'T2', outcome: 'good' },
+    //   { id: 2, comment: 'T3', outcome: 'potential' }
+    // ];
+    // setRowsValue(offlineTest);
   }, []);
 
   const [rowsEdit, setRowsEditValue] = useState({});
@@ -216,7 +216,9 @@ function DetailedComment(props) {
     >
       <DialogTitle id="responsive-dialog-title">Chi tiết bình luận</DialogTitle>
       <DialogContent>
-        {/* <DialogContentText>Phân loại bình luận</DialogContentText> */}
+        <DialogContentText>
+          * Bấm 2 lần vào ô outcome để đưa ra một kết quả phân loại khác
+        </DialogContentText>
         <DataGrid
           rows={rows}
           columns={columns}
